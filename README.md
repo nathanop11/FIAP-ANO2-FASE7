@@ -1,4 +1,4 @@
-## Projeto API Simples com Testes
+# Projeto API Simples com Testes
 Este projeto é uma API em Java com testes automatizados escritos em BDD, utilizando Cucumber e RestAssured. O objetivo dos testes é garantir a funcionalidade correta da API, validando diferentes cenários de comportamento e comunicação entre os serviços.
 
 Estrutura do Projeto
@@ -25,12 +25,8 @@ Navegar para o diretório de testes: No terminal, acesse o diretório onde os ce
 Copiar código
 ` cd api-simples-com-testes/api-simples/src/test/resources
 
-3. **Executar o cenário de teste:**
+## **Executar o cenário de teste:**
    Rode o teste `usuario.feature` para verificar o comportamento das funcionalidades:
-   mvn test -Dtest=CucumberTest
-
-yaml
-Copiar código
 
 ## Requisitos
 
