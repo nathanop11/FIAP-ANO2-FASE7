@@ -1,35 +1,28 @@
 name: Continuous Integration
 on:
-  push:
+  pull_request:  # Aciona para pull requests
+  push:          # Aciona para pushs
     branches:
-      - "feature/*"
-
+      - 'feature/*'  # Isso significa qualquer branch
 jobs:
-  tests:
+  continuous-integration:
     runs-on: ubuntu-latest
     steps:
-      - name: Git Checkout
-        uses: actions/checkout@v4
-
-      - name: Cache Maven Packages
-        uses: actions/cache@v2
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Set up JDK
+        uses: actions/setup-java@v2
         with:
-          path: ~/.m2/repository
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
-          restore-keys: |
-            ${{ runner.os }}-m2
-
-      - name: Setup Java SDK
-        uses: actions/setup-java@v4
-        with:
-          distribution: 'temurin'
-          java-version: '21'
-
-      - name: Unit Tests
-        run: mvn test
-
-      - name: BDD Tests
-        run: mvn test -Dcucumber.options="--tags @registro_usuarios"
-
-      - name: Generate Test Report
-        run: mvn surefire-report:report
+          java-version: '22'
+          distribution: 'adopt'
+      - name: Build and test
+        run: mvn clean test #Esse comando vai rodar os testes
+  deploy:
+    runs-on: ubuntu-latest
+    needs: continuous-integration  # Esse job depende do anterior
+    if: success()  # Esse job só será executado se o job anterior for bem-sucedido
+    steps:
+      - name: Deploy application
+        run: |
+          echo "Deploying application..."
+          # Adicione aqui seu comando de deploy
