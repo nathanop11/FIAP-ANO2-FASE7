@@ -1,19 +1,20 @@
-name: Run Cucumber Tests
-
-on: [push, pull_request]
-
+name: Continuous Integration
+on:
+  pull_request:  # Aciona para pull requests
+  push:          # Aciona para pushs
+    branches:
+      - '*'  # Isso significa qualquer branch
 jobs:
-  build:
+  continuous-integration:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
-        uses: actions/checkout@v2
-
+        uses: actions/checkout@v3
       - name: Set up JDK
         uses: actions/setup-java@v2
         with:
-          java-version: '21'
-
+          java-version: '22'
+          distribution: 'adopt'
       - name: Build with Maven
         run: mvn clean install
 
