@@ -123,6 +123,7 @@
                 <configuration>
                     <includes>
                         <include>**/*Test.java</include>
+                        <include>**/TestRunner.java</include>
                     </includes>
                 </configuration>
             </plugin>
