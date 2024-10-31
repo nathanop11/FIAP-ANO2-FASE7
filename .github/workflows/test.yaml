@@ -22,7 +22,7 @@ jobs:
         run: mvn clean test
 
       - name: Run Cucumber Tests
-        run: mvn -Dtest=runner.TestRunner test
+        run: mvn -Dtest=TestRunner test
 
       - name: List test files
         run: ls -R src/test
