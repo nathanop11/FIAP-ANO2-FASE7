@@ -16,7 +16,7 @@ jobs:
           java-version: '22'
           distribution: 'adopt'
       - name: Build and test
-        run: mvn clean test #Esse comando vai rodar os testes
+        run: mvn test -Dtest=CucumberTest #Esse comando vai rodar os testes
   deploy:
     runs-on: ubuntu-latest
     needs: continuous-integration  # Esse job depende do anterior
