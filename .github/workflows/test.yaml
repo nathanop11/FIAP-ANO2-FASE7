@@ -19,7 +19,7 @@ jobs:
         run: mvn clean install
 
       - name: Run Cucumber Tests
-        run: mvn -Dcucumber.options="src/test/resources/features" test
+        run: mvn -Dtest=runner.TestRunner test
 
       - name: List test files
         run: ls -R src/test
