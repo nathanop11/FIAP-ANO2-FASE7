@@ -21,6 +21,10 @@ jobs:
       - name: Build and test
         run: mvn clean test
 
+      - name: Build e test
+        run: mvn test
+      - name: Run Cucumber Tests
+        run: mvn -Dcucumber.options="src/test/resources/features" test
       - name: Run Cucumber Tests
         run: mvn -Dtest=runner.TestRunner test
 
